@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grapevines – Christmas Concert</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6f7f4; --surface:#ffffff; --ink:#14201a; --muted:#5d6b63; --line:#dde2dc; --accent:#a3222f; --pine:#1d4430; --on-accent:#ffffff;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1612;--surface:#16211b;--ink:#eef2ec;--muted:#9fb0a5;--line:#26352c;--accent:#e0505e;--pine:#8fd1a8;--on-accent:#0e1612}
+}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0e1612;--surface:#16211b;--ink:#eef2ec;--muted:#9fb0a5;--line:#26352c;--accent:#e0505e;--pine:#8fd1a8;--on-accent:#0e1612}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4.5rem);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:3.5rem}
+.logo{font-family:var(--display);font-weight:800;text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem}
+.logo i{width:.55rem;height:.55rem;border-radius:50%;background:var(--accent);display:block}
+.nav{display:flex;align-items:center;gap:1.5rem}
+.nav a.link{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+.nav a.link:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;padding:0 1.3rem;border-radius:99px;background:var(--accent);color:var(--on-accent);font-weight:700;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.bar .btn{min-height:2.25rem;padding:0 1rem;font-size:.95rem}
+@media(max-width:40rem){.nav a.link{display:none}}
+
+.hero{padding:clamp(3.5rem,12vw,8rem) 0 clamp(3rem,8vw,5rem)}
+.hero .tag{display:inline-block;color:var(--pine);font-weight:700;font-size:.95rem;border:1px solid var(--line);background:var(--surface);padding:.3rem .8rem;border-radius:99px;margin-bottom:1.5rem}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(3.4rem,15vw,10rem);line-height:.92;letter-spacing:-.04em;margin:0}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:34rem;font-size:clamp(1.1rem,2.5vw,1.3rem);color:var(--muted);margin:1.5rem 0 2rem}
+.hero .actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+
+section.block{border-top:1px solid var(--line);padding:clamp(2.5rem,7vw,4.5rem) 0}
+.grid{display:grid;gap:1.5rem}
+@media(min-width:56rem){.grid{grid-template-columns:14rem 1fr;gap:3rem}}
+h2{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;margin:0}
+.sub{color:var(--muted);margin:.4rem 0 0;font-size:.95rem}
+.about p{margin:0 0 1rem;max-width:40rem;font-size:1.15rem}
+
+.videos{display:grid;gap:1rem}
+@media(min-width:40rem){.videos{grid-template-columns:1fr 1fr}}
+.vid{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.1rem;text-decoration:none;min-height:5.5rem;transition:border-color .2s,transform .2s}
+.vid:hover{border-color:var(--accent);transform:translateY(-2px)}
+.play{flex:none;width:3.25rem;height:3.25rem;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.play::after{content:"";margin-left:.2rem;border-style:solid;border-width:.55rem 0 .55rem .9rem;border-color:transparent transparent transparent var(--on-accent)}
+.vid b{display:block;font-family:var(--display);font-size:1.1rem}
+.vid span{color:var(--muted);font-size:.9rem}
+
+.ph{color:var(--muted);font-size:.9rem;margin:0 0 1rem}
+ol.set{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:0}
+@media(min-width:40rem){ol.set{grid-template-columns:1fr 1fr;column-gap:3rem}}
+ol.set li{counter-increment:s;display:flex;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+ol.set li::before{content:counter(s);color:var(--muted);min-width:1.5rem;font-variant-numeric:tabular-nums}
+.cards{display:grid;gap:1rem}
+@media(min-width:40rem){.cards{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.2rem}
+.card h3{font-family:var(--display);font-size:1.1rem;margin:0 0 .25rem}
+.card p{margin:0;color:var(--muted)}
+.events{display:grid}
+.ev{display:grid;gap:.15rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+@media(min-width:40rem){.ev{grid-template-columns:9rem 1fr;gap:1.5rem}}
+.ev time{color:var(--muted)}
+.ev b{font-family:var(--display)}
+
+.contact{padding:clamp(3rem,9vw,6rem) 0;border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(2rem,7vw,3.5rem);letter-spacing:-.03em}
+.contact p{color:var(--muted);margin:.75rem 0 1.5rem}
+.phone{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,5vw,2rem);text-decoration:none;color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:1.5rem 0 2rem;color:var(--muted);font-size:.9rem}
+
+.vframe{position:relative;aspect-ratio:16/9;border-radius:1rem;overflow:hidden;background:#000;border:1px solid var(--line)}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.spot{border-radius:1rem;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.spot iframe{display:block;width:100%;height:30rem;border:0}
+.evgrid{display:grid;gap:1.25rem}
+@media(min-width:40rem){.evgrid{grid-template-columns:1fr 1fr}}
+.evc{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:1rem;overflow:hidden}
+.evimg{position:relative;aspect-ratio:1/1;background:linear-gradient(135deg,var(--pine),var(--accent));opacity:.95}
+.evimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.evc figcaption{padding:1rem 1.2rem;font-family:var(--display);font-weight:700;font-size:1.1rem}
+
+.plot{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1rem;margin:0 0 1.5rem}
+.plot img{display:block;width:100%;max-width:40rem;height:auto;margin:0 auto}
+.plot figcaption{color:#5d6b63;font-size:.9rem;text-align:center;margin-top:.5rem}
+.rt{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
+.rt th{text-align:left;color:var(--muted);font-weight:500;font-size:.9rem;padding:.6rem .75rem;border-bottom:1px solid var(--line)}
+.rt td{padding:.85rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+.rt td:first-child{font-family:var(--display);font-weight:700}
+@media(max-width:44rem){
+  .rt,.rt tbody,.rt tr,.rt td{display:block}
+  .rt thead{display:none}
+  .rt tr{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:.9rem 1rem;margin-bottom:.75rem}
+  .rt td{border:0;padding:.15rem 0}
+  .rt td[data-l]:not(:first-child)::before{content:attr(data-l) ": ";color:var(--muted)}
+  .rt td:empty{display:none}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.vid{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top"><i></i>Grapevines</a>
+    <nav class="nav">
+      <a class="link" href="#watch">Watch</a>
+      <a class="link" href="#listen">Listen</a>
+      <a class="link" href="#rider">Tech rider</a>
+      <a class="btn" href="#contact">Book us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="tag">Christmas concert</span>
+      <h1>Grape<br>vines<em>.</em></h1>
+      <p>A 60s and 70s cover band. Rock and pop classics, played with energy.</p>
+      <div class="actions">
+        <a class="btn" href="#contact">Book Grapevines</a>
+        <a class="btn ghost" href="#watch">Watch videos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block about" id="about">
+    <div class="wrap grid">
+      <h2>About</h2>
+      <div>
+        <p>Grapevines is an electrifying cover band that brings the iconic sounds of the ’60s and ’70s to life. With vibrant, lively performances, we captivate audiences with upbeat renditions of popular hits from that era.</p>
+        <p>From rock to pop, we recreate the timeless classics, delivering an unforgettable experience filled with infectious energy and a celebration of the golden age of music.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="watch">
+    <div class="wrap grid">
+      <div><h2>Watch</h2><p class="sub">From a previous Christmas concert.</p></div>
+      <div class="videos">
+        <div class="vframe"><iframe src="https://www.youtube.com/embed/aYcl_RiWqZA?si=gyPS9aViZlBlPbcM" title="Grapevines live video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="vframe"><iframe src="https://www.youtube.com/embed/hHOr3FDPttY?si=HsKdnKcMIM40BGC-" title="Grapevines live video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="vframe"><iframe src="https://www.youtube.com/embed/I9Z3ZZqz01Y?si=1cAU4DhPC9AzWccf" title="Grapevines live video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="vframe"><iframe src="https://www.youtube.com/embed/Fac3NRTbfNA?si=rlcfl0jQpztiPMr_" title="Grapevines live video 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="listen">
+    <div class="wrap grid">
+      <div><h2>Listen</h2><p class="sub">Our playlist on Spotify.</p></div>
+      <div class="spot"><iframe src="https://open.spotify.com/embed/playlist/4GW3JMTKgooQdUuEqFWAvy" title="Grapevines playlist on Spotify" loading="lazy" allow="encrypted-media; fullscreen; clipboard-write"></iframe></div>
+    </div>
+  </section>
+
+  <section class="block" id="rider">
+    <div class="wrap grid">
+      <h2>Tech rider</h2>
+      <div>
+        <figure class="plot"><img src="images/stage-plot.png" alt="Stage plot: drums at the back, two guitar amps and a bass amp in the middle, three vocal mics with monitors at the front, and one more monitor beside the drums" loading="lazy"><figcaption>Stage plot</figcaption></figure>
+        <table class="rt">
+          <thead><tr><th>Item</th><th>Microphone</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Bass amp</td><td data-l="Mic">Shure SM57 with stand</td><td data-l="Notes">Hartke</td></tr>
+            <tr><td>Two guitar amps</td><td data-l="Mic">Shure SM57 with stand</td><td data-l="Notes">In order of preference: Fender Twin Reverb, Fender Hot Rod Deluxe, Fender Blues Junior, Roland Jazz Chorus (JC), Laney CUB12R</td></tr>
+            <tr><td>Three vocal mics with stands</td><td data-l="Mic">Shure SM58 with stand</td><td data-l="Notes">All 3 mics</td></tr>
+            <tr><td>Four stage monitors</td><td data-l="Mic"></td><td data-l="Notes"></td></tr>
+            <tr><td>Acoustic drum set</td><td data-l="Mic"></td><td data-l="Notes">Full drum set with drum chair. Full cymbal set (ride, crash, hi-hat), preferably Zildjian K Custom</td></tr>
+            <tr><td>DI box for acoustic guitar</td><td data-l="Mic"></td><td data-l="Notes"></td></tr>
+            <tr><td>Power outlets and cables</td><td data-l="Mic"></td><td data-l="Notes"></td></tr>
+            <tr><td>Three guitar stands</td><td data-l="Mic"></td><td data-l="Notes"></td></tr>
+            <tr><td>Table for MIDI keyboard and laptop</td><td data-l="Mic"></td><td data-l="Notes"></td></tr>
+          </tbody>
+        </table>
+        <a class="btn ghost" href="Grapevines_Tech_Rider.pdf" download>Download PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="events">
+    <div class="wrap grid">
+      <h2>Past events</h2>
+      <div>
+        <div class="evgrid">
+          <figure class="evc"><div class="evimg"><img src="images/event1.jpg" alt="Galleria 40 Christmas Concert" loading="lazy" onerror="this.remove()"></div><figcaption>Galleria 40 Christmas Concert</figcaption></figure>
+          <figure class="evc"><div class="evimg"><img src="images/event2.jpg" alt="Galleria 40 Music Fiesta" loading="lazy" onerror="this.remove()"></div><figcaption>Galleria 40 Music Fiesta</figcaption></figure>
+          <figure class="evc"><div class="evimg"><img src="images/event3.jpg" alt="Cairo Jazz Club 21st Anniversary" loading="lazy" onerror="this.remove()"></div><figcaption>Cairo Jazz Club 21st Anniversary</figcaption></figure>
+          <figure class="evc"><div class="evimg"><img src="images/event4.jpg" alt="The Grocer Opening" loading="lazy" onerror="this.remove()"></div><figcaption>The Grocer Opening</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Book Grapevines</h2>
+      <p>For bookings and availability, contact Maged Faltas.</p>
+      <a class="phone" href="tel:+201094157994">+20 109 415 7994</a>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© Grapevines</div></footer>
+</body>
+</html>
